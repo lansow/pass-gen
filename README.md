@@ -17,7 +17,7 @@
 
 ## پیش‌نمایش
 
-![Password Generator Dark Theme](/dark-theme-preview.png)
+![Password Generator Dark Theme](/screenshot.png)
 
 ## تکنولوژی‌های استفاده شده
 
