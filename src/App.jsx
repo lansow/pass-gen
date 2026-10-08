@@ -1,6 +1,18 @@
 import { useState, useRef } from 'react'
 import './App.css'
 
+const secureRandomIndex = (max) => {
+  const range = 0x100000000;
+  const limit = Math.floor(range / max) * max;
+  const value = new Uint32Array(1);
+
+  do {
+    window.crypto.getRandomValues(value);
+  } while (value[0] >= limit);
+
+  return value[0] % max;
+};
+
 function App() {
   const [options, setOptions] = useState({
     numbers: true,
@@ -38,7 +50,7 @@ function App() {
 
     let generatedPassword = '';
     for (let i = 0; i < passwordLen; i++) {
-      generatedPassword += chars[Math.floor(Math.random() * chars.length)];
+      generatedPassword += chars[secureRandomIndex(chars.length)];
     }
     setPassword(generatedPassword);
     setError('');
